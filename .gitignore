@@ -17,12 +17,6 @@ next-env.d.ts
 .nitro/
 .output/
 
-# expo
-.expo/
-dist/
-expo-env.d.ts
-apps/expo/.gitignore
-
 # production
 build
 
@@ -39,9 +33,6 @@ yarn-error.log*
 # local env files
 .env
 .env*.local
-
-# vercel
-.vercel
 
 # typescript
 *.tsbuildinfo
