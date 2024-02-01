@@ -1,5 +1,5 @@
-import { Client } from "@planetscale/database";
-import { drizzle } from "drizzle-orm/planetscale-serverless";
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 
 import * as auth from "./schema/auth";
 import * as post from "./schema/post";
@@ -11,10 +11,10 @@ export { mySqlTable as tableCreator } from "./schema/_table";
 export * from "drizzle-orm";
 
 export const db = drizzle(
-  new Client({
+  await mysql.createConnection({
     host: process.env.DB_HOST,
-    username: process.env.DB_USERNAME,
+    user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-  }).connection(),
-  { schema },
+  }),
+  { schema, mode: "default" },
 );

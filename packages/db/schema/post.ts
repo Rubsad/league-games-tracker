@@ -7,8 +7,8 @@ export const post = mySqlTable("post", {
   id: serial("id").primaryKey(),
   title: varchar("name", { length: 256 }).notNull(),
   content: varchar("content", { length: 256 }).notNull(),
-  createdAt: timestamp("created_at")
+  createdAt: timestamp("created_at", { mode: "date" })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  updatedAt: timestamp("updatedAt").onUpdateNow(),
+  updatedAt: timestamp("updatedAt", { mode: "date" }).onUpdateNow(),
 });
